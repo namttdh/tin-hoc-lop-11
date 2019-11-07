@@ -7,7 +7,11 @@ HOW TO RUN WEBSITE:
 
 `#1, clone and cd tin-hoc-lop-11`
 
-`#2, open command and run "docker run --rm -v $(pwd):/app composer install && docker-compose up"`
+`#2, open command and run "docker run --rm -v $(pwd):/app composer install"`
 
-`#3, open new command and run "docker-compose exec app php artisan migrate && php artisan passport:install"`
+`#3, wait done and run "docker-compose up"`
+
+`#4, open new command and run "docker-compose exec app php artisan migrate"`
+
+`#4, and then run "docker-compose exec app php artisan passport:install"`
 
