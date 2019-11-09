@@ -5,9 +5,9 @@ Docker, Docker compose.
 
 HOW TO RUN WEBSITE:
 
-`#0, cp .env.dev to .env`
+`#0, clone and cd tin-hoc-lop-11`
 
-`#1, clone and cd tin-hoc-lop-11`
+`#1, cp .env.dev to .env`
 
 `#2, open command and run "docker run --rm -v $(pwd):/app composer install"`
 
