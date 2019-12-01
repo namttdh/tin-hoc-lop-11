@@ -39,4 +39,10 @@ Route::post('project/create','ProjectsController@create');
 Route::post('project/edit/{id}','ProjectsController@edit');
 Route::delete('project/delete/{id}','ProjectsController@delete');
 
+//Project Done
+Route::get('projectdone/getall','ProjectDoneController@getAll');
+Route::post('projectdone/create','ProjectDoneController@create');
+Route::post('projectdone/edit/{id}','ProjectDoneController@edit');
+Route::delete('projectdone/delete/{id}','ProjectDoneController@delete');
+
 Route::middleware('auth:api')->get('/test-auth','TestController@testAuth');
