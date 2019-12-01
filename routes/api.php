@@ -18,4 +18,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/test/{id}','TestController@test');
+Route::get('/groupsyllabus/create','TestController@create');
+Route::get('/groupsyllabus/edit/{id}','TestController@edit');
+
+//GroupSyllabus
+Route::get('groupsyllabus/getall','GroupSyllabusController@getAll');
+Route::post('groupsyllabus/create','GroupSyllabusController@create');
+Route::post('groupsyllabus/edit/{id}','GroupSyllabusController@edit');
+Route::delete('groupsyllabus/delete/{id}','GroupSyllabusController@delete');
+
+//Syllabus
+Route::get('syllabus/getall','SyllabusController@getAll');
+Route::post('syllabus/create','SyllabusController@create');
+Route::post('syllabus/edit/{id}','SyllabusController@edit');
+Route::delete('syllabus/delete/{id}','SyllabusController@delete');
+
+//Projects
+Route::get('project/getall','ProjectsController@getAll');
+Route::post('project/create','ProjectsController@create');
+Route::post('project/edit/{id}','ProjectsController@edit');
+Route::delete('project/delete/{id}','ProjectsController@delete');
+
 Route::middleware('auth:api')->get('/test-auth','TestController@testAuth');

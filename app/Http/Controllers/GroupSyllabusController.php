@@ -7,9 +7,8 @@ namespace App\Http\Controllers;
 use App\Http\Model\GroupSyllabus;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class GroupSyllabusController extends Controller
 {
-
     public function create(Request $request){
         $groupSyllabus = new GroupSyllabus();
         $groupSyllabus->name = $request->name;
@@ -24,13 +23,20 @@ class TestController extends Controller
         return $groupSyllabus;
     }
 
-    public function test($id){
-        return GroupSyllabus::findById($id);
+    public function delete($id){
+        $groupSyllabus = GroupSyllabus::findById($id);
+        $groupSyllabus->delete();
+        return $groupSyllabus;
+    }
+    
+    public function getAll(){
+        $groupSyllabus = GroupSyllabus::GetAll();
+        return $groupSyllabus;
     }
 
-
-
-    public function testAuth(Request $request){
-        return $request->user();
+    public function test(){
+        echo"asjhd";
+        return 0;
     }
+
 }

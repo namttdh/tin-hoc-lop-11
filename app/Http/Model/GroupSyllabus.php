@@ -14,4 +14,8 @@ class GroupSyllabus extends Model
     public static  function  findById($id){
         return self::query()->where("id",$id)->first();
     }
+    public static function getAll(){
+        return self::query()->get();
+    }
+
 }
