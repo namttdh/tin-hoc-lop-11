@@ -7,7 +7,7 @@ HOW TO RUN WEBSITE:
 
 `#0, clone and cd tin-hoc-lop-11`
 
-`#1, cp .env.dev to .env`
+`#1, cp .env.dev .env`
 
 `#2, open command and run "docker run --rm -v $(pwd):/app composer install"`
 
