@@ -9,7 +9,7 @@ HOW TO RUN WEBSITE:
 
 `#1, cp .env.dev .env`
 
-`#2, open command and run "docker run --rm -v $(pwd):/app composer install"`
+`#2, open command and run "docker run --rm --interactive --tty --volume ${PWD}:/app composer install"`
 
 `#3, wait done and run "docker-compose up"`
 
