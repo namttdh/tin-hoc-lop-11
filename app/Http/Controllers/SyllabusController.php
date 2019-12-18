@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Model\Syllabus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SyllabusController extends Controller
 {
@@ -33,6 +34,22 @@ class SyllabusController extends Controller
     
     public function getAll(){
         $syllabus = Syllabus::getAll();
+        return $syllabus;
+    }
+
+    public function getObject ()
+    {
+        $object = DB::table("syllabus")
+            ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
+            ->select('syllabus.*', 'group_syllabus.*')
+            // ->get();
+            ->paginate(10);
+            return $object;
+    }
+
+    public function test()
+    {
+        $syllabus = Syllabus::getOject();
         return $syllabus;
     }
 

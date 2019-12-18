@@ -28,7 +28,13 @@ class GroupSyllabusController extends Controller
     }
     
     public function getAll(){
-        $groupSyllabus = GroupSyllabus::GetAll();
+        $groupSyllabus = GroupSyllabus::getAll();
+        return $groupSyllabus;
+    }
+
+    public function getPaginate()
+    {
+        $groupSyllabus = GroupSyllabus::getLimit();
         return $groupSyllabus;
     }
 

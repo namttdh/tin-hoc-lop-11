@@ -20,4 +20,9 @@ class GroupSyllabus extends Model
     {
         return self::query()->get();
     }
+
+    public static function getLimit()
+    {
+        return self::query()->paginate(10);
+    }
 }

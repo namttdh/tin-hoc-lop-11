@@ -6,10 +6,10 @@ namespace App\Http\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Syllabus extends Model
+class Users extends Model
 {
-    protected $table = "syllabus";
-    protected $fillable = ['name', 'sub_name', 'id_group'];
+    protected $table = 'users';
+    protected $fillable = ['name', 'email', 'password', 'level'];
 
     public static function findById($id)
     {
@@ -21,8 +21,8 @@ class Syllabus extends Model
         return self::query()->get();
     }
 
-    public static function getOject()
+    public function getUsersObject()
     {
-        return self::query()->get("syllabus.name", "syllabus.id_group");
+        return self::query()->paginate(10);
     }
 }
