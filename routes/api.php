@@ -35,6 +35,8 @@ Route::post('syllabus/edit/{id}','SyllabusController@edit');
 Route::delete('syllabus/delete/{id}','SyllabusController@delete');
 Route::get('syllabus/test','SyllabusController@test');
 Route::get('syllabus/getobject','SyllabusController@getObject');
+Route::get('syllabus/findbyname/{name}','SyllabusController@findByName');
+
 
 //Projects
 Route::get('project/getall','ProjectsController@getAll');

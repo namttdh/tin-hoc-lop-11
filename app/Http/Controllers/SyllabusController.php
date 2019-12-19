@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class SyllabusController extends Controller
 {
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $syllabus = new Syllabus();
         $syllabus->name = $request->name;
         $syllabus->sub_name = $request->sub_name;
@@ -17,7 +18,8 @@ class SyllabusController extends Controller
         return $syllabus;
     }
 
-    public function edit(Request $request,$id){
+    public function edit(Request $request, $id)
+    {
         $syllabus = Syllabus::findById($id);
         $syllabus->name = $request->name;
         $syllabus->sub_name = $request->sub_name;
@@ -26,25 +28,33 @@ class SyllabusController extends Controller
         return $syllabus;
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $syllabus = Syllabus::findById($id);
         $syllabus->delete();
         return $syllabus;
     }
-    
-    public function getAll(){
+
+    public function getAll()
+    {
         $syllabus = Syllabus::getAll();
         return $syllabus;
     }
 
-    public function getObject ()
+    public function getObject()
     {
         $object = DB::table("syllabus")
             ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
             ->select('syllabus.*', 'group_syllabus.*')
             // ->get();
             ->paginate(10);
-            return $object;
+        return $object;
+    }
+
+    public function findByName($name)
+    {
+        $syllabus = Syllabus::findByName($name);
+        return $syllabus;
     }
 
     public function test()
@@ -52,5 +62,4 @@ class SyllabusController extends Controller
         $syllabus = Syllabus::getOject();
         return $syllabus;
     }
-
 }
