@@ -38,6 +38,12 @@ class GroupSyllabusController extends Controller
         return $groupSyllabus;
     }
 
+    public function findByName($name)
+    {
+        $groupSyllabus = GroupSyllabus::findByName($name);
+        return $groupSyllabus;
+    }
+
     public function test(){
         echo"asjhd";
         return 0;

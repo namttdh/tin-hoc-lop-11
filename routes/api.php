@@ -27,6 +27,7 @@ Route::post('groupsyllabus/create','GroupSyllabusController@create');
 Route::post('groupsyllabus/edit/{id}','GroupSyllabusController@edit');
 Route::delete('groupsyllabus/delete/{id}','GroupSyllabusController@delete');
 Route::get('groupsyllabus/getlimit','GroupSyllabusController@getPaginate');
+Route::get('groupsyllabus/findbyname/{name}','GroupSyllabusController@findByName');
 
 //Syllabus
 Route::get('syllabus/getall','SyllabusController@getAll');

@@ -25,4 +25,9 @@ class GroupSyllabus extends Model
     {
         return self::query()->paginate(10);
     }
+
+    public static function findByName($name)
+    {
+        return self::query()->where("name", "like", "%".$name."%")->get();
+    }
 }
