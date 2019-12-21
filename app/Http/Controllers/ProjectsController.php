@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Model\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
@@ -43,6 +44,10 @@ class ProjectsController extends Controller
     
     public function getAll(){
         $project = Projects::getAll();
+        $project = DB::table('projects')
+        ->join('syllabus', 'projects.id_syllabus', '=', 'syllabus.id')
+        ->select('projects.*', 'syllabus.name as syllabus_name')
+        ->get();
         return $project;
     }
 
