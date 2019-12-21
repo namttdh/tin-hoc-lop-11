@@ -38,22 +38,30 @@ class SyllabusController extends Controller
     public function getAll()
     {
         $syllabus = Syllabus::getAll();
+        $syllabus = DB::table('syllabus')
+            ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
+            ->select('syllabus.id','syllabus.name', 'group_syllabus.name as group_name')
+            ->get();
         return $syllabus;
     }
 
     public function getObject()
     {
-        $object = DB::table("syllabus")
+        $object = DB::table('syllabus')
             ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
-            ->select('syllabus.*', 'group_syllabus.*')
-            // ->get();
-            ->paginate(10);
+            ->select('group_syllabus.name as group_name', 'syllabus.name')
+            ->get();
+        // ->paginate(10);
         return $object;
     }
 
     public function findByName(Request $request)
     {
         $syllabus = Syllabus::findByName($request->name);
+        $syllabus = DB::table('syllabus')
+            ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
+            ->select('syllabus.id','syllabus.name', 'group_syllabus.name as group_name')
+            ->get();
         return $syllabus;
     }
 
