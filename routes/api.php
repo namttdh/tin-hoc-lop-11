@@ -26,7 +26,7 @@ Route::get('groupsyllabus/getall','GroupSyllabusController@getAll');
 Route::post('groupsyllabus/create','GroupSyllabusController@create');
 Route::post('groupsyllabus/edit','GroupSyllabusController@edit');
 Route::delete('groupsyllabus/delete/{id}','GroupSyllabusController@delete');
-Route::get('groupsyllabus/getlimit','GroupSyllabusController@getPaginate');
+Route::get('groupsyllabus/paginate','GroupSyllabusController@getPaginate');
 Route::get('groupsyllabus/findbyname','GroupSyllabusController@findByName');
 
 //Syllabus
@@ -35,8 +35,9 @@ Route::post('syllabus/create','SyllabusController@create');
 Route::post('syllabus/edit','SyllabusController@edit');
 Route::delete('syllabus/delete/{id}','SyllabusController@delete');
 Route::get('syllabus/test','SyllabusController@test');
-Route::get('syllabus/getobject','SyllabusController@getObject');
+Route::get('syllabus/paginategroupsyllabus','SyllabusController@getPaginateGroupSyllabus');
 Route::get('syllabus/findbyname','SyllabusController@findByName');
+Route::get('syllabus/paginateproject','SyllabusController@getPaginateProjects');
 
 
 //Projects
@@ -57,4 +58,4 @@ Route::middleware('auth:api')->get('/test-auth','TestController@testAuth');
 
 //Users
 Route::get('/users/getall','UsersController@getAll');
-Route::get('/users/getpage','UsersController@getPage');
+Route::get('/users/getPaginate','UsersController@getPaginate');

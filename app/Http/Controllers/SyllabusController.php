@@ -45,13 +45,23 @@ class SyllabusController extends Controller
         return $syllabus;
     }
 
-    public function getObject()
+    public function getPaginateGroupSyllabus()
     {
         $object = DB::table('syllabus')
             ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
-            ->select('group_syllabus.name as group_name', 'syllabus.name')
-            ->get();
-        // ->paginate(10);
+            ->select('syllabus.id','syllabus.name','syllabus.id_group', 'group_syllabus.name as group_name')
+            // ->get();
+        ->paginate(10);
+        return $object;
+    }
+
+    public function getPaginateProjects()
+    {
+        $object = DB::table('syllabus')
+            ->join('projects', 'syllabus.id', '=', 'projects.id_syllabus')
+            ->select('syllabus.id','syllabus.name','syllabus.id_group', 'projects.name as project_name')
+            // ->get();
+            ->paginate(10);
         return $object;
     }
 

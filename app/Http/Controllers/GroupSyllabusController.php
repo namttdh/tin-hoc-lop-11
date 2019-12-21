@@ -34,7 +34,7 @@ class GroupSyllabusController extends Controller
 
     public function getPaginate()
     {
-        $groupSyllabus = GroupSyllabus::getLimit();
+        $groupSyllabus = GroupSyllabus::getPaginate(10);
         return $groupSyllabus;
     }
 
