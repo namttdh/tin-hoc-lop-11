@@ -16,6 +16,11 @@ class Syllabus extends Model
         return self::query()->where("id", $id)->first();
     }
 
+    public static function findByName($name)
+    {
+        return self::query()->where("name", "like", "%".$name."%")->get();
+    }
+
     public static function getAll()
     {
         return self::query()->get();

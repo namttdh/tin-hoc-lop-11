@@ -14,15 +14,15 @@ class GroupSyllabusController extends Controller
         return $groupSyllabus;
     }
 
-    public function edit(Request $request,$id){
-        $groupSyllabus = GroupSyllabus::findById($id);
+    public function edit(Request $request){
+        $groupSyllabus = GroupSyllabus::findById($request->id);
         $groupSyllabus->name = $request->name;
         $groupSyllabus->save();
         return $groupSyllabus;
     }
 
-    public function delete($id){
-        $groupSyllabus = GroupSyllabus::findById($id);
+    public function delete(Request $request){
+        $groupSyllabus = GroupSyllabus::findById($request->id);
         $groupSyllabus->delete();
         return $groupSyllabus;
     }
@@ -34,7 +34,14 @@ class GroupSyllabusController extends Controller
 
     public function getPaginate()
     {
-        $groupSyllabus = GroupSyllabus::getLimit();
+        $groupSyllabus = GroupSyllabus::getPaginate(10);
+        return $groupSyllabus;
+    }
+
+    public function findByName(Request $request)
+    {
+        $groupSyllabus = GroupSyllabus::findByName($request->name);
+        // $groupSyllabus->name = $request->name;
         return $groupSyllabus;
     }
 

@@ -13,7 +13,7 @@ class UsersController extends Controller
         return Users::findById($id);
     }
 
-    public function getPage()
+    public function getPaginate()
     {
         $users = DB::table('users')
             ->select('id', 'name', 'email','level')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Model\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
@@ -18,8 +19,8 @@ class ProjectsController extends Controller
         return $project;
     }
 
-    public function edit(Request $request,$id){
-        $project = Projects::findById($id);
+    public function edit(Request $request){
+        $project = Projects::findById($request->id);
         $project->name = $request->name;
         $project->id_syllabus = $request->id_syllabus;
         $project->description = $request->description;
@@ -35,8 +36,18 @@ class ProjectsController extends Controller
         return $project;
     }
     
+    public function findByName(Request $request)
+    {
+        $project = Projects::findByName($request->name);
+        return $project;
+    }
+    
     public function getAll(){
         $project = Projects::getAll();
+        $project = DB::table('projects')
+        ->join('syllabus', 'projects.id_syllabus', '=', 'syllabus.id')
+        ->select('projects.*', 'syllabus.name as syllabus_name')
+        ->get();
         return $project;
     }
 

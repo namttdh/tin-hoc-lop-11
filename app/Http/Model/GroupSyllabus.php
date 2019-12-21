@@ -21,8 +21,13 @@ class GroupSyllabus extends Model
         return self::query()->get();
     }
 
-    public static function getLimit()
+    public static function getPaginate($page)
     {
-        return self::query()->paginate(10);
+        return self::query()->paginate($page);
+    }
+
+    public static function findByName($name)
+    {
+        return self::query()->where("name", "like", "%".$name."%")->get();
     }
 }
