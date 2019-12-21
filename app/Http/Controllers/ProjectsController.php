@@ -19,8 +19,8 @@ class ProjectsController extends Controller
         return $project;
     }
 
-    public function edit(Request $request,$id){
-        $project = Projects::findById($id);
+    public function edit(Request $request){
+        $project = Projects::findById($request->id);
         $project->name = $request->name;
         $project->id_syllabus = $request->id_syllabus;
         $project->description = $request->description;

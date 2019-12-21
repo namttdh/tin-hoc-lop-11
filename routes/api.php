@@ -43,7 +43,7 @@ Route::get('syllabus/paginateproject','SyllabusController@getPaginateProjects');
 //Projects
 Route::get('project/getall','ProjectsController@getAll');
 Route::post('project/create','ProjectsController@create');
-Route::post('project/edit/{id}','ProjectsController@edit');
+Route::post('project/edit','ProjectsController@edit');
 Route::delete('project/delete/{id}','ProjectsController@delete');
 Route::get('project/findbyname','ProjectsController@findByName');
 
