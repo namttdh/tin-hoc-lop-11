@@ -24,19 +24,19 @@ Route::get('/groupsyllabus/edit/{id}','TestController@edit');
 //GroupSyllabus
 Route::get('groupsyllabus/getall','GroupSyllabusController@getAll');
 Route::post('groupsyllabus/create','GroupSyllabusController@create');
-Route::post('groupsyllabus/edit/{id}','GroupSyllabusController@edit');
-Route::delete('groupsyllabus/delete/{id}','GroupSyllabusController@delete');
+Route::post('groupsyllabus/edit','GroupSyllabusController@edit');
+Route::delete('groupsyllabus/delete','GroupSyllabusController@delete');
 Route::get('groupsyllabus/getlimit','GroupSyllabusController@getPaginate');
-Route::get('groupsyllabus/findbyname/{name}','GroupSyllabusController@findByName');
+Route::get('groupsyllabus/findbyname','GroupSyllabusController@findByName');
 
 //Syllabus
 Route::get('syllabus/getall','SyllabusController@getAll');
 Route::post('syllabus/create','SyllabusController@create');
-Route::post('syllabus/edit/{id}','SyllabusController@edit');
-Route::delete('syllabus/delete/{id}','SyllabusController@delete');
+Route::post('syllabus/edit','SyllabusController@edit');
+Route::delete('syllabus/delete','SyllabusController@delete');
 Route::get('syllabus/test','SyllabusController@test');
 Route::get('syllabus/getobject','SyllabusController@getObject');
-Route::get('syllabus/findbyname/{name}','SyllabusController@findByName');
+Route::get('syllabus/findbyname','SyllabusController@findByName');
 
 
 //Projects
@@ -44,6 +44,7 @@ Route::get('project/getall','ProjectsController@getAll');
 Route::post('project/create','ProjectsController@create');
 Route::post('project/edit/{id}','ProjectsController@edit');
 Route::delete('project/delete/{id}','ProjectsController@delete');
+Route::get('project/findbyname','ProjectsController@findByName');
 
 //Project Done
 Route::get('projectdone/getall','ProjectDoneController@getAll');

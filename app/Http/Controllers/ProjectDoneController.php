@@ -19,7 +19,6 @@ class ProjectDoneController extends Controller
         $project = ProjectDone::findById($id);
         $project->id_user = $request->id_user;
         $project->id_project = $request->id_project;
-        $project->save();us;
         $project->save();
         return $project;
     }

@@ -35,6 +35,12 @@ class ProjectsController extends Controller
         return $project;
     }
     
+    public function findByName(Request $request)
+    {
+        $project = Projects::findByName($request->name);
+        return $project;
+    }
+    
     public function getAll(){
         $project = Projects::getAll();
         return $project;

@@ -12,25 +12,25 @@ class SyllabusController extends Controller
     {
         $syllabus = new Syllabus();
         $syllabus->name = $request->name;
-        $syllabus->sub_name = $request->sub_name;
+        // $syllabus->sub_name = $request->sub_name;
         $syllabus->id_group = $request->id_group;
         $syllabus->save();
         return $syllabus;
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
-        $syllabus = Syllabus::findById($id);
+        $syllabus = Syllabus::findById($request->id);
         $syllabus->name = $request->name;
-        $syllabus->sub_name = $request->sub_name;
+        // $syllabus->sub_name = $request->sub_name;
         $syllabus->id_group = $request->id_group;
         $syllabus->save();
         return $syllabus;
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $syllabus = Syllabus::findById($id);
+        $syllabus = Syllabus::findById($request->id);
         $syllabus->delete();
         return $syllabus;
     }
@@ -51,9 +51,9 @@ class SyllabusController extends Controller
         return $object;
     }
 
-    public function findByName($name)
+    public function findByName(Request $request)
     {
-        $syllabus = Syllabus::findByName($name);
+        $syllabus = Syllabus::findByName($request->name);
         return $syllabus;
     }
 
