@@ -5,6 +5,7 @@ namespace App\Http\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Users extends Model
 {
@@ -18,14 +19,31 @@ class Users extends Model
 
     public static function getAll()
     {
-        return self::query()->get();
+        return self::query()->select('id', 'name', 'email', 'level')->get();
+    }
+
+    public static function findByName($name)
+    {
+        return self::query()
+            ->where('name', 'like', '%' . $name . '%')
+            ->select('name', 'email', 'level')
+            ->get();
+    }
+
+    public static function getPaginate()
+    {
+        $users = DB::table('users')
+            ->select('id', 'name', 'email', 'level')
+            ->paginate(10);
+        return $users;
     }
 
     public function getUsersObject()
     {
         return self::query()->paginate(10);
     }
-    public static function findByEmail($email){
+    public static function findByEmail($email)
+    {
         return self::query()->where("email", $email)->first();
     }
 }

@@ -59,5 +59,8 @@ Route::middleware('auth:api')->get('/test-auth','TestController@testAuth');
 //Users
 Route::get('/users/getall','UsersController@getAll');
 Route::get('/users/getPaginate','UsersController@getPaginate');
+Route::get('/users/findbyname','UsersController@findByName');
+Route::post('/users/edit','UsersController@edit');
+Route::delete('/users/delete','UsersController@delete');
 
 Route::post('/register','Auth\RegisterController@apiRegister');
