@@ -68,10 +68,6 @@ class SyllabusController extends Controller
     public function findByName(Request $request)
     {
         $syllabus = Syllabus::findByName($request->name);
-        $syllabus = DB::table('syllabus')
-            ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
-            ->select('syllabus.id','syllabus.name', 'group_syllabus.name as group_name')
-            ->get();
         return $syllabus;
     }
 

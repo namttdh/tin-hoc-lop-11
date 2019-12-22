@@ -1,10 +1,9 @@
 <?php
 
-
 namespace App\Http\Model;
 
-
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Syllabus extends Model
 {
@@ -18,7 +17,13 @@ class Syllabus extends Model
 
     public static function findByName($name)
     {
-        return self::query()->where("name", "like", "%".$name."%")->get();
+        // $syllabus = self::query()->where("name", "like", "%".$name."%")->get();
+        $syllabus = DB::table('syllabus')
+        ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
+        ->select('syllabus.id','syllabus.name', 'group_syllabus.name as group_name')
+        ->where('syllabus.name', 'like', '%'.$name.'%')
+        ->get();
+        return $syllabus;
     }
 
     public static function getAll()

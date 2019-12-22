@@ -23,8 +23,9 @@ class Projects extends Model
         $project = DB::table('projects')
             ->join('syllabus', 'projects.id_syllabus', '=', 'syllabus.id')
             ->select('projects.id', 'projects.name', 'syllabus.name as syllabus_name', 'projects.description', 'projects.json_data')
+            ->where('projects.name', 'like', '%'.$name.'%')
             ->get();
-        $project = self::query()->where("name", "like", "%" . $name . "%")->get();
+        // $project = self::query()->where("name", "like", "%" . $name . "%")->get();
         return $project;
     }
 
