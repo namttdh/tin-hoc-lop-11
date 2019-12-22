@@ -26,7 +26,7 @@ class Users extends Model
     {
         return self::query()
             ->where('name', 'like', '%' . $name . '%')
-            ->select('name', 'email', 'level')
+            ->select('id', 'name', 'email', 'level')
             ->get();
     }
 
