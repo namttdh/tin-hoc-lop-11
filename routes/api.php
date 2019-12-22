@@ -59,3 +59,5 @@ Route::middleware('auth:api')->get('/test-auth','TestController@testAuth');
 //Users
 Route::get('/users/getall','UsersController@getAll');
 Route::get('/users/getPaginate','UsersController@getPaginate');
+
+Route::post('/register','Auth\RegisterController@apiRegister');
