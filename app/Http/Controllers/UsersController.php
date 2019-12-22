@@ -14,6 +14,7 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->level =0;
         $user->save();
         return $user;
     }
