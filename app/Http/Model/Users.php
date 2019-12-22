@@ -25,4 +25,7 @@ class Users extends Model
     {
         return self::query()->paginate(10);
     }
+    public static function findByEmail($email){
+        return self::query()->where("email", $email)->first();
+    }
 }

@@ -15,16 +15,16 @@ class ProjectDoneController extends Controller
         return $project;
     }
 
-    public function edit(Request $request,$id){
-        $project = ProjectDone::findById($id);
+    public function edit(Request $request){
+        $project = ProjectDone::findById($request->id);
         $project->id_user = $request->id_user;
         $project->id_project = $request->id_project;
         $project->save();
         return $project;
     }
 
-    public function delete($id){
-        $project = ProjectDone::findById($id);
+    public function delete(Request $request){
+        $project = ProjectDone::findById($request->id);
         $project->delete();
         return $project;
     }

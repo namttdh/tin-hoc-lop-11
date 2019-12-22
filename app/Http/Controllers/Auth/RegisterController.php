@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -68,5 +70,30 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function apiRegister(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',
+                'c_password' => 'required|same:password',
+            ]
+        );
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        try{
+
+            $user = User::create($input);
+            $success['token'] =  $user->createToken('AppName')->accessToken;
+            return response()->json(['success' => true],200);
+        }catch(Exception $e){
+            return response()->json(['success' => false], 200);
+        }        
     }
 }

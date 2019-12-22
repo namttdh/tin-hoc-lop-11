@@ -30,8 +30,8 @@ class ProjectsController extends Controller
         return $project;
     }
 
-    public function delete($id){
-        $project = Projects::findById($id);
+    public function delete(Request $request){
+        $project = Projects::findById($request->id);
         $project->delete();
         return $project;
     }
