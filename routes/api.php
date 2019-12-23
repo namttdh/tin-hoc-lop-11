@@ -60,4 +60,15 @@ Route::middleware('auth:api')->get('/test-auth','TestController@testAuth');
 Route::get('/users/getall','UsersController@getAll');
 Route::get('/users/getPaginate','UsersController@getPaginate');
 
-Route::post('/register','Auth\RegisterController@apiRegister');
+Route::post('/pascal/compiler',function (Request $request){
+    $client = new \GuzzleHttp\Client();
+    if(!$request->code || $request->code == '') return null;
+    $options = [
+        'form_params' => [
+            "code" => $request->code
+        ]
+    ];
+    $request = $client->post('pascal:3000', $options);
+    return $request->getBody();
+});
+

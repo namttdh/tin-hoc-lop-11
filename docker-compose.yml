@@ -19,7 +19,24 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
-
+  pascal:
+    build:
+      context: .
+      dockerfile: ./pascal.js/Dockerfile
+    image: cnpm-test/pascal
+    container_name: pascal
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /usr/src/app
+    volumes:
+      - ./pascal.js:/usr/src/app
+    networks:
+      - app-network
+    ports:
+      - "3000:3000"
   #Nginx Service
   webserver:
     image: nginx:alpine
@@ -64,7 +81,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
-      - app-network    
+      - app-network
 
 #Docker Networks
 networks:

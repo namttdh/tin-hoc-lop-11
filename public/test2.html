@@ -1,0 +1,28 @@
+<textarea id="test-code" style="width: 500;height: 600;">
+    program HelloWorld;
+    begin
+      WriteLn('Hello World!');
+    end.
+</textarea>
+<button onclick="runcode()">run code</button>
+
+<script>
+    function runcode(){
+        var http = new XMLHttpRequest();
+        var url = 'http://localhost:50000/api/pascal/compiler';
+        http.open('POST', url, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                var jsonObj = JSON.parse(http.responseText);
+                eval(atob(jsonObj.message));
+            }
+        };
+        var params = 'code='+btoa(document.getElementById("test-code").value);
+        http.send(params);
+    }
+
+</script>
