@@ -33,8 +33,11 @@ services:
     working_dir: /usr/src/app
     volumes:
       - ./pascal.js:/usr/src/app
+      - /usr/src/app/node_modules
     networks:
       - app-network
+    ports:
+      - "3000:300"
   #Nginx Service
   webserver:
     image: nginx:alpine
