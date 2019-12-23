@@ -35,8 +35,6 @@ services:
       - ./pascal.js:/usr/src/app
     networks:
       - app-network
-    ports:
-      - "3000:3000"
   #Nginx Service
   webserver:
     image: nginx:alpine
