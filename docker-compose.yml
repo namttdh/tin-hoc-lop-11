@@ -37,7 +37,7 @@ services:
     networks:
       - app-network
     ports:
-      - "3000:300"
+      - "3000:3000"
   #Nginx Service
   webserver:
     image: nginx:alpine
