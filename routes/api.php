@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/test/{id}','TestController@test');
+Route::get('/test','TestController@test');
 Route::get('/groupsyllabus/create','TestController@create');
 Route::get('/groupsyllabus/edit/{id}','TestController@edit');
 
@@ -37,7 +37,7 @@ Route::delete('syllabus/delete','SyllabusController@delete');
 Route::get('syllabus/test','SyllabusController@test');
 Route::get('syllabus/paginategroupsyllabus','SyllabusController@getPaginateGroupSyllabus');
 Route::get('syllabus/findbyname','SyllabusController@findByName');
-Route::get('syllabus/paginateproject','SyllabusController@getPaginateProjects');
+Route::get('syllabus/paginatesyllabus','SyllabusController@getPaginateSyllabus');
 
 
 //Projects
@@ -46,6 +46,7 @@ Route::post('project/create','ProjectsController@create');
 Route::post('project/edit','ProjectsController@edit');
 Route::delete('project/delete','ProjectsController@delete');
 Route::get('project/findbyname','ProjectsController@findByName');
+Route::get('project/getlistproject','ProjectsController@getListProject');
 
 //Project Done
 Route::get('projectdone/getall','ProjectDoneController@getAll');
