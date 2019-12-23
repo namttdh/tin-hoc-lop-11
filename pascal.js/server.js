@@ -65,7 +65,7 @@ app.post('/', (req, res) => {
     let buff = Buffer.from(req.body.code, 'base64');
     let text = buff.toString('utf-8');
     var js = compiler.compileJS(text, function (mess) {
-        res.send();
+        res.send({success: false, message: mess});
     });
     res.send({success: true, message: new Buffer(js).toString('base64')})
 });
