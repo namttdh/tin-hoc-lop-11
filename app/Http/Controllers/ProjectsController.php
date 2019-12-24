@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $project = new Projects();
         $project->name = $request->name;
         $project->id_syllabus = $request->id_syllabus;
@@ -21,7 +22,8 @@ class ProjectsController extends Controller
         return $project;
     }
 
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
         $project = Projects::findById($request->id);
         $project->name = $request->name;
         $project->id_syllabus = $request->id_syllabus;
@@ -33,7 +35,8 @@ class ProjectsController extends Controller
         return $project;
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $project = Projects::findById($request->id);
         $project->delete();
         return $project;
@@ -45,12 +48,14 @@ class ProjectsController extends Controller
         return $project;
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         $project = Projects::getAll();
         return $project;
     }
 
-    public function getListProject(Request $request){
+    public function getListProject(Request $request)
+    {
         $project = Projects::getListProject($request->name);
         return $project;
     }
@@ -63,7 +68,10 @@ class ProjectsController extends Controller
 
     public function findById(Request $request)
     {
-        return Projects::findById($request->id);
+        $project = Projects::findById($request->id);
+
+        $project->name_syllabus = Syllabus::findById($project->id_syllabus)->name;
+        return $project;
     }
 
 }

@@ -50,7 +50,7 @@ Route::delete('project/delete','ProjectsController@delete');
 Route::get('project/findbyname','ProjectsController@findByName');
 Route::get('project/getlistproject','ProjectsController@getListProject');
 Route::get('project/countprojects','ProjectsController@countProjects');
-Route::get('project/finfbyid','ProjectsController@findById');
+Route::get('project/findbyid','ProjectsController@findById');
 
 //Project Done
 Route::get('projectdone/getall','ProjectDoneController@getAll');

@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->timestamps();
             $table->string("name");
             $table->integer("id_syllabus");
-            $table->string("description");
+            $table->longText("description");
             $table->integer("type");
             $table->string("json_data");
 
