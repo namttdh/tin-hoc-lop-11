@@ -72,6 +72,7 @@ class ProjectsController extends Controller
         $project->name_syllabus = Syllabus::findById($project->id_syllabus)->name;
         return $project;
     }
+    
 
     public function getListProjectByIdSyllabus(Request $request)
     {

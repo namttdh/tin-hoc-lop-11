@@ -21,6 +21,10 @@ Route::get('/test','TestController@test');
 Route::get('/groupsyllabus/create','TestController@create');
 Route::get('/groupsyllabus/edit/{id}','TestController@edit');
 
+
+
+
+
 //GroupSyllabus
 Route::get('groupsyllabus/getall','GroupSyllabusController@getAll');
 Route::post('groupsyllabus/create','GroupSyllabusController@create');
@@ -74,7 +78,7 @@ Route::post('/users/create','UsersController@create');
 Route::post('/register','Auth\RegisterController@apiRegister');
 Route::delete('/users/delete','UsersController@delete');
 Route::get('/users/countuser','UsersController@countUser');
-
+Route::get('/home/getcount','UsersController@count');
 
 
 Route::post('/pascal/compiler',function (Request $request){

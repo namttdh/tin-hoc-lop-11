@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Model\Users;
+use App\Http\Model\Projects;
+use App\Http\Model\Syllabus;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -73,6 +75,20 @@ class UsersController extends Controller
     public function getProfile(Request $request)
     {
         return $request->user();
+    }
+
+    public function count()
+    {
+        $s = Syllabus::countAllSyllabus();
+        $p = Projects::countAllProjects();
+        $u = Users::countAllUser();
+        $data1 = array($data = array(
+            "count_syllabus"=>$s,
+            "count_project"=>$p,
+            "count_user"=>$u,
+        ));
+        
+        return $data1;
     }
 
 }
