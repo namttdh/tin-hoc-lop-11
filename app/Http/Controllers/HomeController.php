@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Model\Projects;
+use App\Http\Model\Syllabus;
+use App\Http\Model\Users;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,4 +27,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
 }
