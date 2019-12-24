@@ -5,6 +5,7 @@ namespace App\Http\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class GroupSyllabus extends Model
 {
@@ -30,4 +31,5 @@ class GroupSyllabus extends Model
     {
         return self::query()->where("name", "like", "%".$name."%")->get();
     }
+
 }

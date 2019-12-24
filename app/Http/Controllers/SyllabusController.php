@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Model\Syllabus;
+use App\Http\Model\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,39 +31,29 @@ class SyllabusController extends Controller
 
     public function delete(Request $request)
     {
+        $project= Projects::deleteByIdSyllabus($request->id);
         $syllabus = Syllabus::findById($request->id);
         $syllabus->delete();
         return $syllabus;
     }
 
+
     public function getAll()
     {
         $syllabus = Syllabus::getAll();
-        $syllabus = DB::table('syllabus')
-            ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
-            ->select('syllabus.id','syllabus.name','syllabus.id_group', 'group_syllabus.name as group_name')
-            ->get();
         return $syllabus;
     }
 
     public function getPaginateGroupSyllabus()
     {
-        $object = DB::table('syllabus')
-            ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
-            ->select('syllabus.id','syllabus.name','syllabus.id_group', 'group_syllabus.name as group_name')
-            // ->get();
-        ->paginate(10);
-        return $object;
+        $syllabus = Syllabus::getPaginateGroupSyllabus();
+        return $syllabus;
     }
 
-    public function getPaginateProjects()
+    public function getPaginateSyllabus()
     {
-        $object = DB::table('syllabus')
-            ->join('projects', 'syllabus.id', '=', 'projects.id_syllabus')
-            ->select('syllabus.id','syllabus.name','syllabus.id_group', 'projects.name as project_name')
-            // ->get();
-            ->paginate(10);
-        return $object;
+        $syllabus = Syllabus::getPaginateSyllabus();
+        return $syllabus;
     }
 
     public function findByName(Request $request)
@@ -73,7 +64,12 @@ class SyllabusController extends Controller
 
     public function test()
     {
-        $syllabus = Syllabus::getOject();
+        $syllabus = Syllabus::getListSyllsbus();
+        // $data (
+        //     'id_group_syllabus' => array (
+        //         'syllabus_name' => 
+        //     )
+        // )
         return $syllabus;
     }
 }

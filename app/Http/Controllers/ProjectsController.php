@@ -15,6 +15,7 @@ class ProjectsController extends Controller
         $project->description = $request->description;
         $project->type = $request->type;
         $project->json_data = $request->json_data;
+        $project->id_group_syllabus = $request->id_group_syllabus;
         $project->save();
         return $project;
     }
@@ -26,6 +27,7 @@ class ProjectsController extends Controller
         $project->description = $request->description;
         $project->type = $request->type;
         $project->json_data = $request->json_data;
+        $project->id_group_syllabus = $request->id_group_syllabus;
         $project->save();
         return $project;
     }
@@ -44,11 +46,13 @@ class ProjectsController extends Controller
     
     public function getAll(){
         $project = Projects::getAll();
-        $project = DB::table('projects')
-        ->join('syllabus', 'projects.id_syllabus', '=', 'syllabus.id')
-        ->select('projects.*', 'syllabus.name as syllabus_name')
-        ->get();
         return $project;
     }
+    
+    public function getListProject(Request $request){
+        $project = Projects::getListProject($request->name);
+        return $project;
+    }
+    
 
 }
