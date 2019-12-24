@@ -64,7 +64,12 @@ class SyllabusController extends Controller
 
     public function test()
     {
-        $syllabus = Syllabus::getOject();
+        $syllabus = Syllabus::getListSyllsbus();
+        // $data (
+        //     'id_group_syllabus' => array (
+        //         'syllabus_name' => 
+        //     )
+        // )
         return $syllabus;
     }
 }
