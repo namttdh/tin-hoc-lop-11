@@ -69,7 +69,6 @@ Route::post('/users/edit','UsersController@edit');
 Route::post('/users/create','UsersController@create');
 Route::post('/register','Auth\RegisterController@apiRegister');
 Route::delete('/users/delete','UsersController@delete');
-Route::get('/user/profile','UsersController@getProfile');
 Route::get('/users/countuser','UsersController@countUser');
 
 

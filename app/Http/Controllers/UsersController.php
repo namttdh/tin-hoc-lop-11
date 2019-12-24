@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Model\Users;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -26,7 +25,7 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         if ($request->password != "") {
-            $user->password = $request->password;
+            $user->password = bcrypt($request->password);
         }
         $user->level = $request->level;
         $user->save();
