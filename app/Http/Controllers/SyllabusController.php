@@ -66,14 +66,26 @@ class SyllabusController extends Controller
     public function test()
     {
         $syllabus = Syllabus::getListSyllsbus();
-        // $data (
-        //     'id_group_syllabus' => array (
-        //         'syllabus_name' => 
-        //     )
-        // )
-        $array = (array) $syllabus;
+        $data = [];
 
-        print_r($array['*items']);
-        // return print_r($array['id_group_syllabus']);
+        foreach ($syllabus as $k){            
+            $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];          
+            // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];          
+        }
+
+        return $data;
+    }
+
+    public function getListSyllabusByGroup()
+    {
+        $syllabus = Syllabus::getListSyllsbus();
+        $data = [];
+
+        foreach ($syllabus as $k){            
+            $data[$k->id_group_syllabus][$k->name_group_syllabus][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];          
+            // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];          
+        }
+
+        return $data;
     }
 }

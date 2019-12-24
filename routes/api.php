@@ -38,6 +38,7 @@ Route::get('syllabus/test','SyllabusController@test');
 Route::get('syllabus/paginategroupsyllabus','SyllabusController@getPaginateGroupSyllabus');
 Route::get('syllabus/findbyname','SyllabusController@findByName');
 Route::get('syllabus/paginatesyllabus','SyllabusController@getPaginateSyllabus');
+Route::get('syllabus/getlistsyllabusbygroup','SyllabusController@getListSyllabusByGroup');
 
 
 //Projects

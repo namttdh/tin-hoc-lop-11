@@ -67,9 +67,9 @@ class Syllabus extends Model
     
     public static function getListSyllsbus()
     {
-        $syllabus = DB::table('syllabus')
-            ->join('group_syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
-            ->select('group_syllabus.id as id_group_syllabus', 'group_syllabus.name as name_group_syllabus', 'syllabus.name as syllabus_name')
+        $syllabus = DB::table('group_syllabus')
+            ->join('syllabus', 'syllabus.id_group', '=', 'group_syllabus.id')
+            ->select('group_syllabus.id as id_group_syllabus', 'group_syllabus.name as name_group_syllabus', 'syllabus.name as syllabus_name', 'syllabus.id')
             ->get();
         return $syllabus;
     }   
