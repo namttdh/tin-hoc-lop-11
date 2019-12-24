@@ -23,7 +23,7 @@ class SyllabusController extends Controller
     {
         $syllabus = Syllabus::findById($request->id);
         $syllabus->name = $request->name;
-         $syllabus->sub_name = "";
+        $syllabus->sub_name = "";
         $syllabus->id_group = $request->id_group;
         $syllabus->save();
         return $syllabus;
@@ -31,7 +31,7 @@ class SyllabusController extends Controller
 
     public function delete(Request $request)
     {
-        $project= Projects::deleteByIdSyllabus($request->id);
+        $project = Projects::deleteByIdSyllabus($request->id);
         $syllabus = Syllabus::findById($request->id);
         $syllabus->delete();
         return $syllabus;
@@ -67,8 +67,8 @@ class SyllabusController extends Controller
         $syllabus = Syllabus::getListSyllsbus();
         $data = [];
 
-        foreach ($syllabus as $k){
-            $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];
+        foreach ($syllabus as $k) {
+            $data[$k->id_group_syllabus][] = ['id_syllabus' => $k->id, 'name_syllabus' => $k->syllabus_name];
             // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];
         }
 
@@ -80,9 +80,9 @@ class SyllabusController extends Controller
         $syllabus = Syllabus::getListSyllsbus();
         $data = [];
 
-        foreach ($syllabus as $k){
-            $data[$k->id_group_syllabus]['name']  = $k->name_group_syllabus;
-            $data[$k->id_group_syllabus]['syllabus'][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];
+        foreach ($syllabus as $k) {
+            $data[$k->id_group_syllabus]['name'] = $k->name_group_syllabus;
+            $data[$k->id_group_syllabus]['syllabus'][] = ['id_syllabus' => $k->id, 'name_syllabus' => $k->syllabus_name];
             // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];
         }
 
