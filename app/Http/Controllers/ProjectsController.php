@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Model\Projects;
+use App\Http\Model\Syllabus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,8 @@ class ProjectsController extends Controller
         $project->id_syllabus = $request->id_syllabus;
         $project->description = $request->description;
         $project->type = $request->type;
-        $project->json_data = $request->json_data;
-        $project->id_group_syllabus = $request->id_group_syllabus;
+        $project->json_data = $request->json_data;       
+        $project->id_group_syllabus = Syllabus::getIdGroup($request->id_syllabus)->id_group;
         $project->save();
         return $project;
     }

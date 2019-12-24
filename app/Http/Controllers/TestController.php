@@ -24,14 +24,10 @@ class TestController extends Controller
         return $groupSyllabus;
     }
 
-    public function test(){
+    public function test(Request $request){
+        $s  = Syllabus::getIdGroup($request->id);
+        return $s;
 
-        $project = DB::table('projects')->get('id_syllabus');
-        foreach ($project as $v)
-        {
-            param($v);
-        }
-        
     }
 
 

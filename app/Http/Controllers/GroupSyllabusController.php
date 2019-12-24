@@ -25,7 +25,8 @@ class GroupSyllabusController extends Controller
     }
 
     public function delete(Request $request){
-        $project = Projects::deleteByIdSyllabusGroup($request->id);
+        // $idSyllabus = Syllabus::getIdByIdGroup($request->id);
+        $project = Projects::deleteByIdSyllabus($request->id);
         $syllabus = Syllabus::deleteByidGroup($request->id);
         $groupSyllabus = GroupSyllabus::findById($request->id);
         $groupSyllabus->delete();

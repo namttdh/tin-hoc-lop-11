@@ -58,4 +58,5 @@ class Projects extends Model
             ->get();
         return $project;
     }
+
 }

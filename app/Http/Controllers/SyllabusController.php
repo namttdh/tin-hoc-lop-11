@@ -85,7 +85,7 @@ class SyllabusController extends Controller
             $data[$k->id_group_syllabus][$k->name_group_syllabus][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];          
             // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];          
         }
-
+        
         return $data;
     }
 }

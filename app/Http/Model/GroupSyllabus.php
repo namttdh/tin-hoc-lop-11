@@ -32,4 +32,6 @@ class GroupSyllabus extends Model
         return self::query()->where("name", "like", "%".$name."%")->get();
     }
 
+    
+
 }

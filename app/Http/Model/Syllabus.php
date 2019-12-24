@@ -64,6 +64,7 @@ class Syllabus extends Model
         $syllabus = DB::table('syllabus')->where('id_group', '=', $id_group)->delete();
         return $syllabus;
     }
+
     
     public static function getListSyllsbus()
     {
@@ -72,7 +73,17 @@ class Syllabus extends Model
             ->select('group_syllabus.id as id_group_syllabus', 'group_syllabus.name as name_group_syllabus', 'syllabus.name as syllabus_name', 'syllabus.id')
             ->get();
         return $syllabus;
-    }   
+    }
+    
+    public static function getIdGroup($id)
+    {
+        return self::query()->where("id", $id)->first();
+    }
+    
+    public static function getIdByIdGroup($id_group)
+    {
+        return self::query()->where("id_group", $id_group)->get('id');
+    }
 
 
 }
