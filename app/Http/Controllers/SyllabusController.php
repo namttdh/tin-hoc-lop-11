@@ -6,6 +6,7 @@ use App\Http\Model\Syllabus;
 use App\Http\Model\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Builder\Param;
 
 class SyllabusController extends Controller
 {
@@ -70,6 +71,9 @@ class SyllabusController extends Controller
         //         'syllabus_name' => 
         //     )
         // )
-        return $syllabus;
+        $array = (array) $syllabus;
+
+        print_r($array['*items']);
+        // return print_r($array['id_group_syllabus']);
     }
 }
