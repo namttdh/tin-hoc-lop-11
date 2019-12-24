@@ -56,4 +56,14 @@ class ProjectsController extends Controller
     }
 
 
+    public function countProjects()
+    {
+        return Projects::countAllProjects();
+    }
+
+    public function findById(Request $request)
+    {
+        return Projects::findById($request->id);
+    }
+
 }

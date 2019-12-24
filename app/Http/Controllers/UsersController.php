@@ -52,6 +52,10 @@ class UsersController extends Controller
         return Users::findByName($request->name);
     }
 
+    public function countUser()
+    {
+        return Users::countAllUser();
+    }
     public function getProfile(Request $request)
     {
 
