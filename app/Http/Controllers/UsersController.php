@@ -82,13 +82,10 @@ class UsersController extends Controller
         $s = Syllabus::countAllSyllabus();
         $p = Projects::countAllProjects();
         $u = Users::countAllUser();
-        $data1 = array($data = array(
-            "count_syllabus"=>$s,
+
+        return ["count_syllabus"=>$s,
             "count_project"=>$p,
-            "count_user"=>$u,
-        ));
-        
-        return $data1;
+            "count_user"=>$u];
     }
 
 }
