@@ -69,8 +69,13 @@ class ProjectsController extends Controller
     public function findById(Request $request)
     {
         $project = Projects::findById($request->id);
-
         $project->name_syllabus = Syllabus::findById($project->id_syllabus)->name;
+        return $project;
+    }
+
+    public function getListProjectByIdSyllabus(Request $request)
+    {
+        $project = Projects::findByIdSyllabus($request->id);
         return $project;
     }
 

@@ -82,8 +82,9 @@ class SyllabusController extends Controller
 
         foreach ($syllabus as $k) {
             $data[$k->id_group_syllabus]['name'] = $k->name_group_syllabus;
-            $data[$k->id_group_syllabus]['syllabus'][] = ['id_syllabus' => $k->id, 'name_syllabus' => $k->syllabus_name];
-            // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];
+            $project = Projects::findFirstByIdSyllabus($k->id);
+            if ($project)
+                $data[$k->id_group_syllabus]['syllabus'][] = ['id_syllabus' => $k->id, 'name_syllabus' => $k->syllabus_name, 'id_project' => $project->id];
         }
 
         return $data;

@@ -51,6 +51,7 @@ Route::get('project/findbyname','ProjectsController@findByName');
 Route::get('project/getlistproject','ProjectsController@getListProject');
 Route::get('project/countprojects','ProjectsController@countProjects');
 Route::get('project/findbyid','ProjectsController@findById');
+Route::get('project/findbyidsyllabus','ProjectsController@getListProjectByIdSyllabus');
 
 //Project Done
 Route::get('projectdone/getall','ProjectDoneController@getAll');

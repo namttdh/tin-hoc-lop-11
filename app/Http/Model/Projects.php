@@ -15,6 +15,14 @@ class Projects extends Model
     {
         return self::query()->where("id", $id)->first();
     }
+    public static function findFirstByIdSyllabus($idSyllabus)
+    {
+        return self::query()->where("id_syllabus", $idSyllabus)->first();
+    }
+    public static function findByIdSyllabus($idSyllabus)
+    {
+        return self::query()->where("id_syllabus", $idSyllabus)->get(['id','name']);
+    }
 
     public static function findByName($name)
     {
@@ -36,7 +44,7 @@ class Projects extends Model
             ->get();
         return $project;
     }
-    
+
     public static function deleteByIdSyllabus($id_syllabus)
     {
         $project = DB::table('projects')->where('id_syllabus', '=', $id_syllabus)->delete();
