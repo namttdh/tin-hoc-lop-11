@@ -15,7 +15,7 @@ class ProjectsController extends Controller
         $project->id_syllabus = $request->id_syllabus;
         $project->description = $request->description;
         $project->type = $request->type;
-        $project->json_data = $request->json_data;       
+        $project->json_data = $request->json_data;
         $project->id_group_syllabus = Syllabus::getIdGroup($request->id_syllabus)->id_group;
         $project->save();
         return $project;
@@ -28,7 +28,7 @@ class ProjectsController extends Controller
         $project->description = $request->description;
         $project->type = $request->type;
         $project->json_data = $request->json_data;
-        $project->id_group_syllabus = $request->id_group_syllabus;
+        $project->id_group_syllabus = Syllabus::getIdGroup($request->id_syllabus)->id_group;
         $project->save();
         return $project;
     }
@@ -38,22 +38,22 @@ class ProjectsController extends Controller
         $project->delete();
         return $project;
     }
-    
+
     public function findByName(Request $request)
     {
         $project = Projects::findByName($request->name);
         return $project;
     }
-    
+
     public function getAll(){
         $project = Projects::getAll();
         return $project;
     }
-    
+
     public function getListProject(Request $request){
         $project = Projects::getListProject($request->name);
         return $project;
     }
-    
+
 
 }

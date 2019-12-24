@@ -40,7 +40,7 @@ class UsersController extends Controller
     public function getPaginate()
     {
         return Users::getPaginate();
-        
+
     }
 
     public function getAll(){
@@ -49,6 +49,12 @@ class UsersController extends Controller
 
     public function findByName(Request $request)
     {
+        return Users::findByName($request->name);
+    }
+
+    public function getProfile(Request $request)
+    {
+
         return Users::findByName($request->name);
     }
 
