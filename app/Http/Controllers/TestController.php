@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Model\GroupSyllabus;
+use App\Http\Model\Syllabus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
@@ -22,10 +24,15 @@ class TestController extends Controller
         return $groupSyllabus;
     }
 
-    public function test($id){
-        return GroupSyllabus::findById($id);
-    }
+    public function test(){
 
+        $project = DB::table('projects')->get('id_syllabus');
+        foreach ($project as $v)
+        {
+            param($v);
+        }
+        
+    }
 
 
     public function testAuth(Request $request){
