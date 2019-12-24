@@ -67,9 +67,9 @@ class SyllabusController extends Controller
         $syllabus = Syllabus::getListSyllsbus();
         $data = [];
 
-        foreach ($syllabus as $k){            
-            $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];          
-            // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];          
+        foreach ($syllabus as $k){
+            $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];
+            // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];
         }
 
         return $data;
@@ -80,11 +80,12 @@ class SyllabusController extends Controller
         $syllabus = Syllabus::getListSyllsbus();
         $data = [];
 
-        foreach ($syllabus as $k){            
-            $data[$k->id_group_syllabus][$k->name_group_syllabus][]  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];          
-            // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];          
+        foreach ($syllabus as $k){
+            $data[$k->id_group_syllabus]['name']  = $k->name_group_syllabus;          
+            $data[$k->id_group_syllabus]['syllabus']  = ['id_syllabus'=> $k->id, 'name_syllabus'=> $k->syllabus_name];
+            // $data[$k->id_group_syllabus][]  = ['id_syllabus'=> $k->id];
         }
-        
+
         return $data;
     }
 
