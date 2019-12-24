@@ -12,7 +12,7 @@ class SyllabusController extends Controller
     {
         $syllabus = new Syllabus();
         $syllabus->name = $request->name;
-        // $syllabus->sub_name = $request->sub_name;
+        $syllabus->sub_name = "";
         $syllabus->id_group = $request->id_group;
         $syllabus->save();
         return $syllabus;
@@ -22,7 +22,7 @@ class SyllabusController extends Controller
     {
         $syllabus = Syllabus::findById($request->id);
         $syllabus->name = $request->name;
-        // $syllabus->sub_name = $request->sub_name;
+         $syllabus->sub_name = "";
         $syllabus->id_group = $request->id_group;
         $syllabus->save();
         return $syllabus;

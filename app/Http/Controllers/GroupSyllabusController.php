@@ -10,6 +10,7 @@ class GroupSyllabusController extends Controller
     public function create(Request $request){
         $groupSyllabus = new GroupSyllabus();
         $groupSyllabus->name = $request->name;
+        $groupSyllabus->name = $request->name;
         $groupSyllabus->save();
         return $groupSyllabus;
     }
@@ -26,7 +27,7 @@ class GroupSyllabusController extends Controller
         $groupSyllabus->delete();
         return $groupSyllabus;
     }
-    
+
     public function getAll(){
         $groupSyllabus = GroupSyllabus::getAll();
         return $groupSyllabus;
