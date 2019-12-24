@@ -9,21 +9,23 @@ use Illuminate\Support\Facades\DB;
 class UsersController extends Controller
 {
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $user = new Users();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->level =0;
+        $user->level = 0;
         $user->save();
         return $user;
     }
 
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
         $user = Users::findById($request->id);
         $user->name = $request->name;
         $user->email = $request->email;
-        if($request->password != ""){
+        if ($request->password != "") {
             $user->password = $request->password;
         }
         $user->level = $request->level;
@@ -31,7 +33,8 @@ class UsersController extends Controller
         return $user;
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $user = Users::findById($request->id);
         $user->delete();
         return $user;
@@ -43,7 +46,8 @@ class UsersController extends Controller
 
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         return Users::getAll();
     }
 
@@ -56,10 +60,10 @@ class UsersController extends Controller
     {
         return Users::countAllUser();
     }
+
     public function getProfile(Request $request)
     {
-
-        return Users::findByName($request->name);
+        return $request->user();
     }
 
 }
