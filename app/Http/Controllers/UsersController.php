@@ -31,6 +31,16 @@ class UsersController extends Controller
         $user->save();
         return $user;
     }
+    public function updateProfile(Request $request)
+    {
+        $user = Users::findById($request->user()->id);
+        $user->name = $request->name;
+        if ($request->password != "") {
+            $user->password = bcrypt($request->password);
+        }
+        $user->save();
+        return $user;
+    }
 
     public function delete(Request $request)
     {

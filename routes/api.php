@@ -66,6 +66,9 @@ Route::get('/users/getall','UsersController@getAll');
 Route::get('/users/getPaginate','UsersController@getPaginate');
 Route::get('/users/findbyname','UsersController@findByName');
 Route::post('/users/edit','UsersController@edit');
+
+Route::middleware('auth:api')->post('/users/updateProfile','UsersController@updateProfile');
+
 Route::post('/users/create','UsersController@create');
 Route::post('/register','Auth\RegisterController@apiRegister');
 Route::delete('/users/delete','UsersController@delete');
