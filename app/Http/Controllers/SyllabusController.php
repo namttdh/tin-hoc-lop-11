@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Model\Syllabus;
 use App\Http\Model\Projects;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use PhpParser\Builder\Param;
 
 class SyllabusController extends Controller
@@ -87,5 +86,10 @@ class SyllabusController extends Controller
         }
         
         return $data;
+    }
+
+    public function countSyllabus()
+    {
+        return Syllabus::countAllSyllabus();
     }
 }

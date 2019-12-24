@@ -28,7 +28,7 @@ class ProjectsController extends Controller
         $project->description = $request->description;
         $project->type = $request->type;
         $project->json_data = $request->json_data;
-        $project->id_group_syllabus = $request->id_group_syllabus;
+        $project->id_group_syllabus = Syllabus::getIdGroup($request->id_syllabus)->id_group;
         $project->save();
         return $project;
     }
@@ -55,5 +55,14 @@ class ProjectsController extends Controller
         return $project;
     }
     
+    public function countProjects()
+    {
+        return Projects::countAllProjects();
+    }
+
+    public function findById(Request $request)
+    {
+        return Projects::findById($request->id);
+    }
 
 }

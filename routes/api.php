@@ -39,6 +39,7 @@ Route::get('syllabus/paginategroupsyllabus','SyllabusController@getPaginateGroup
 Route::get('syllabus/findbyname','SyllabusController@findByName');
 Route::get('syllabus/paginatesyllabus','SyllabusController@getPaginateSyllabus');
 Route::get('syllabus/getlistsyllabusbygroup','SyllabusController@getListSyllabusByGroup');
+Route::get('syllabus/countsyllabus','SyllabusController@countSyllabus');
 
 
 //Projects
@@ -48,6 +49,8 @@ Route::post('project/edit','ProjectsController@edit');
 Route::delete('project/delete','ProjectsController@delete');
 Route::get('project/findbyname','ProjectsController@findByName');
 Route::get('project/getlistproject','ProjectsController@getListProject');
+Route::get('project/countprojects','ProjectsController@countProjects');
+Route::get('project/finfbyid','ProjectsController@findById');
 
 //Project Done
 Route::get('projectdone/getall','ProjectDoneController@getAll');
@@ -66,6 +69,7 @@ Route::post('/users/edit','UsersController@edit');
 Route::post('/users/create','UsersController@create');
 Route::post('/register','Auth\RegisterController@apiRegister');
 Route::delete('/users/delete','UsersController@delete');
+Route::get('/users/countuser','UsersController@countUser');
 
 
 

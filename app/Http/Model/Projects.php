@@ -59,4 +59,24 @@ class Projects extends Model
         return $project;
     }
 
+    public static function getIdSyllabusById($id)
+    {
+        return self::query()->where("id", $id)->first();
+    }
+
+    public static function countProjectBySyllabusId($id_syllabus)
+    {
+        $count = DB::table('projects')
+        ->where('id_syllabus', '=', $id_syllabus)
+        ->count();
+    return $count;
+    }
+
+    public static function countAllProjects()
+    {
+        $count = DB::table('projects')
+            ->count();
+
+        return $count;
+    }
 }

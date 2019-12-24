@@ -85,5 +85,11 @@ class Syllabus extends Model
         return self::query()->where("id_group", $id_group)->get('id');
     }
 
+    public static function countAllSyllabus()
+    {
+        $count = DB::table('syllabus')
+        ->count();
+    return $count;
+    }
 
 }
